@@ -1,7 +1,14 @@
-import { Button, Container, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  createStyles,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
 
 function Create() {
+  const classes = useStyles({ size: "22px" });
   return (
     <Container>
       <Typography
@@ -9,6 +16,7 @@ function Create() {
         variant="h6"
         component="h2"
         gutterBottom
+        className={classes.title}
       >
         Create a New Note
       </Typography>
@@ -18,6 +26,7 @@ function Create() {
         color="secondary"
         variant="contained"
         endIcon={<NoteAddIcon fontSize="large" />}
+        className={classes.btn}
       >
         Submit
       </Button>
@@ -26,3 +35,20 @@ function Create() {
 }
 
 export default Create;
+
+/* --------------------------------- Styles --------------------------------- */
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    title: {
+      fontSize: ({ size }: { size: string }) => size,
+    },
+    btn: {
+      backgroundColor: "red",
+
+      "& .MuiButton-endIcon > svg": {
+        fontSize: 22,
+      },
+    },
+  })
+);
