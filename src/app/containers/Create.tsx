@@ -1,4 +1,5 @@
 import { Button, Container, Typography } from "@material-ui/core";
+import NoteAddIcon from "@material-ui/icons/NoteAdd";
 
 function Create() {
   return (
@@ -12,7 +13,12 @@ function Create() {
         Create a New Note
       </Typography>
 
-      <Button type="submit" color="secondary" variant="contained">
+      <Button
+        type="submit"
+        color="secondary"
+        variant="contained"
+        endIcon={<NoteAddIcon fontSize="large" />}
+      >
         Submit
       </Button>
     </Container>
