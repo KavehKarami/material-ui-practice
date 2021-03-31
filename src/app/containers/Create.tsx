@@ -1,8 +1,8 @@
-import { Typography } from "@material-ui/core";
+import { Button, Container, Typography } from "@material-ui/core";
 
 function Create() {
   return (
-    <div>
+    <Container>
       <Typography
         color="textSecondary"
         variant="h6"
@@ -11,7 +11,11 @@ function Create() {
       >
         Create a New Note
       </Typography>
-    </div>
+
+      <Button type="submit" color="secondary" variant="contained">
+        Submit
+      </Button>
+    </Container>
   );
 }
 
