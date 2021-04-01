@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   Button,
   Container,
@@ -5,10 +6,14 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import DirectionContext from "../../Contexts/DirectionContext";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
+import { Dir } from "../layout/Direction/types";
 
 function Create() {
-  const classes = useStyles({ size: "22px" });
+  const { dir, setDir } = useContext(DirectionContext);
+  const classes = useStyles({ size: "22px", dir });
+
   return (
     <Container>
       <Typography
@@ -30,6 +35,16 @@ function Create() {
       >
         Submit
       </Button>
+
+      <Button
+        onClick={() => {
+          dir === "ltr" ? setDir("rtl") : setDir("ltr");
+        }}
+        color="primary"
+        variant="contained"
+      >
+        Change Direction
+      </Button>
     </Container>
   );
 }
@@ -38,13 +53,20 @@ export default Create;
 
 /* --------------------------------- Styles --------------------------------- */
 
+interface StyleType {
+  size: string | number;
+  dir: Dir;
+}
+
 const useStyles = makeStyles(() =>
   createStyles({
     title: {
-      fontSize: ({ size }: { size: string }) => size,
+      fontSize: ({ size }: StyleType) => size,
     },
     btn: {
       backgroundColor: "red",
+      margin: ({ dir }: StyleType) =>
+        dir === "ltr" ? "0 5px 0 0" : "0 0 0 5px",
 
       "& .MuiButton-endIcon > svg": {
         fontSize: 22,
