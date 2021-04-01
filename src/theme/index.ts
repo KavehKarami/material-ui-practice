@@ -6,6 +6,6 @@ import { palette } from "./palette";
 export const theme = (dir: Dir) =>
   createMuiTheme({
     palette,
-    typography,
+    typography: typography(dir),
     direction: dir,
   });
