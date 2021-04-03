@@ -96,7 +96,7 @@ function Create() {
         />
 
         <FormControl className={classes.field}>
-          <FormLabel>Note Category</FormLabel>
+          <FormLabel focused={false}>Note Category</FormLabel>
           <RadioGroup
             value={category}
             onChange={(e) => setCategory(e.target.value)}
