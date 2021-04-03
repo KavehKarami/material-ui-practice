@@ -21,6 +21,12 @@
       "details": "hi\n\nim a developer",
       "category": "work",
       "id": 4
+    },
+    {
+      "title": "Yo! How're you Doing?",
+      "details": "hi, my name is Kevin Carlsen; my job is creating creative things on the web, I'm a Front-end developer",
+      "category": "work",
+      "id": 5
     }
   ]
 }
