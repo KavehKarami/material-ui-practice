@@ -1,4 +1,5 @@
 import { SyntheticEvent, useContext, useState } from "react";
+import { useHistory } from "react-router";
 import {
   Button,
   Container,
@@ -12,15 +13,17 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import DirectionContext from "../../Contexts/DirectionContext";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import DirectionContext from "../../Contexts/DirectionContext";
 import { Dir } from "../layout/Direction/types";
+import CreateNote from "../../services/CreateNote";
 
 function Create() {
   const { dir, setDir } = useContext(DirectionContext);
   const classes = useStyles({ size: "22px", dir });
+  const history = useHistory();
 
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -42,7 +45,8 @@ function Create() {
     }
 
     if (title && details) {
-      console.log(title, details, category);
+      CreateNote({ title, details, category });
+      history.push("/");
     }
   };
 

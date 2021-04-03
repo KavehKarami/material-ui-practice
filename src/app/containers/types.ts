@@ -1,6 +1,6 @@
 export interface NoteType {
   title: string;
-  description: string;
+  details: string;
   category: string;
   id: number;
 }
