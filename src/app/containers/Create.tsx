@@ -3,7 +3,12 @@ import {
   Button,
   Container,
   createStyles,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
   makeStyles,
+  Radio,
+  RadioGroup,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -21,6 +26,7 @@ function Create() {
   const [details, setDetails] = useState("");
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const [category, setCategory] = useState("work");
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -36,7 +42,7 @@ function Create() {
     }
 
     if (title && details) {
-      console.log(title, details);
+      console.log(title, details, category);
     }
   };
 
@@ -89,6 +95,24 @@ function Create() {
           required
         />
 
+        <FormControl className={classes.field}>
+          <FormLabel>Note Category</FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className={classes.radioGp}
+          >
+            <FormControlLabel label="Money" value="money" control={<Radio />} />
+            <FormControlLabel label="Work" value="work" control={<Radio />} />
+            <FormControlLabel label="Todos" value="todos" control={<Radio />} />
+            <FormControlLabel
+              label="Reminders"
+              value="reminders"
+              control={<Radio />}
+            />
+          </RadioGroup>
+        </FormControl>
+
         <Button
           type="submit"
           color="primary"
@@ -127,6 +151,10 @@ const useStyles = makeStyles(() =>
     },
     field: {
       margin: "20px 0",
+      display: "block",
+    },
+    radioGp: {
+      width: "fit-content",
     },
   })
 );
