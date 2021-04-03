@@ -3,7 +3,7 @@ import { Dir } from "../app/layout/Direction/types";
 
 interface DirCtx {
   dir: Dir;
-  setDir: React.Dispatch<React.SetStateAction<"ltr" | "rtl">>;
+  setDir: React.Dispatch<React.SetStateAction<Dir>>;
 }
 
 const DirectionContext = createContext<DirCtx>({

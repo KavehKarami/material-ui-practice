@@ -8,6 +8,8 @@ import {
 } from "@material-ui/core";
 import DirectionContext from "../../Contexts/DirectionContext";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { Dir } from "../layout/Direction/types";
 
 function Create() {
@@ -42,6 +44,7 @@ function Create() {
         }}
         color="primary"
         variant="contained"
+        endIcon={dir === "ltr" ? <ArrowForwardIcon /> : <ArrowBackIcon />}
       >
         Change Direction
       </Button>
