@@ -1,16 +1,26 @@
 import useFetch from "../../hooks/useFetch";
-import { NoteType } from "./types";
-import { Container, Grid, Paper } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
+import { NoteProps } from "./types";
+import NoteCard from "../components/NoteCard";
+import deleteNote from "../../services/DeleteNote";
 
 function Notes() {
-  const { response: notes }: { response: NoteType[] } = useFetch("/notes");
+  const { response: notes, updateResponse: updateNotes }: NoteProps = useFetch(
+    "/notes"
+  );
+
+  const handleDelete = (id: number) => {
+    deleteNote(id);
+    const newNotes = notes.filter((note) => note.id !== id);
+    updateNotes(newNotes);
+  };
 
   return (
     <Container>
-      <Grid container>
+      <Grid spacing={3} container>
         {notes.map((note) => (
           <Grid item xs={12} md={6} lg={4} key={note.id}>
-            <Paper>{note.title}</Paper>
+            <NoteCard handleDelete={handleDelete} note={note} />
           </Grid>
         ))}
       </Grid>
