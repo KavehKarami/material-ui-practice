@@ -5,9 +5,7 @@ import NoteCard from "../components/NoteCard";
 import deleteNote from "../../services/DeleteNote";
 
 function Notes() {
-  const { response: notes, updateResponse: updateNotes }: NoteProps = useFetch(
-    "/notes"
-  );
+  const { res: notes, updateRes: updateNotes }: NoteProps = useFetch("/notes");
 
   const handleDelete = (id: number) => {
     deleteNote(id);

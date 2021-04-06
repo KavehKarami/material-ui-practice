@@ -1,30 +1,29 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
-import { NoteType } from "../app/containers/types";
 import axiosIntance from "../services/base";
 
 type AxiosOptions = Omit<AxiosRequestConfig, "baseURL" | "url">;
 
 function useFetch(url: string, options?: AxiosOptions) {
-  const [response, setResponse] = useState<NoteType[]>([]);
-  const [error, setError] = useState("");
+  const [res, setRes] = useState([]);
+  const [err, setErr] = useState("");
 
   useEffect(() => {
     const source = axios.CancelToken.source();
 
     const fetchData = async () => {
       try {
-        const res = await axiosIntance.request({
+        const response = await axiosIntance.request({
           url,
           cancelToken: source.token,
           ...options,
         });
 
-        setResponse(res.data);
+        setRes(response.data);
       } catch (e) {
         if (axios.isCancel(e)) {
         } else {
-          setError(e.message);
+          setErr(e.message);
         }
       }
     };
@@ -38,11 +37,11 @@ function useFetch(url: string, options?: AxiosOptions) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateResponse = (newNote: NoteType[]) => {
-    setResponse(newNote);
+  const updateRes = (newNote: any) => {
+    setRes(newNote);
   };
 
-  return { response, updateResponse, error };
+  return { res, updateRes, err };
 }
 
 export default useFetch;

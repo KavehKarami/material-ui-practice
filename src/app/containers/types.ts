@@ -6,6 +6,6 @@ export interface NoteType {
 }
 
 export interface NoteProps {
-  response: NoteType[];
-  updateResponse: (newNote: NoteType[]) => void;
+  res: NoteType[];
+  updateRes: (newNote: NoteType[]) => void;
 }
