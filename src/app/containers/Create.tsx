@@ -31,7 +31,7 @@ function Create() {
   const [detailsError, setDetailsError] = useState(false);
   const [category, setCategory] = useState("work");
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     setTitleError(false);
@@ -45,7 +45,7 @@ function Create() {
     }
 
     if (title && details) {
-      CreateNote({ title, details, category });
+      await CreateNote({ title, details, category });
       history.push("/");
     }
   };
