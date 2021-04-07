@@ -1,4 +1,5 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import Appbar from "../components/Appbar";
 import SideBar from "../components/SideBar";
 
 function Layout({ children }: { children: JSX.Element }) {
@@ -6,12 +7,12 @@ function Layout({ children }: { children: JSX.Element }) {
 
   return (
     <div className={classes.root}>
-      {/* App Bar */}
-
-      {/* Side Drawer */}
+      <Appbar />
       <SideBar />
-
-      <div className={classes.pages}>{children}</div>
+      <div className={classes.pages}>
+        <div className={classes.toolbar}></div>
+        {children}
+      </div>
     </div>
   );
 }
@@ -25,9 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     pages: {
       // backgroundColor: "#f9f9f9",
-      paddingTop: theme.spacing(3),
+      paddingTop: theme.spacing(2),
       width: "100%",
       marginTop: 15,
     },
+    toolbar: theme.mixins.toolbar,
   })
 );
