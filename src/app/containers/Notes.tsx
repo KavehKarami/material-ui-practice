@@ -7,8 +7,8 @@ import deleteNote from "../../services/DeleteNote";
 function Notes() {
   const { res: notes, updateRes: updateNotes }: NoteProps = useFetch("/notes");
 
-  const handleDelete = (id: number) => {
-    deleteNote(id);
+  const handleDelete = async (id: number) => {
+    await deleteNote(id);
     const newNotes = notes.filter((note) => note.id !== id);
     updateNotes(newNotes);
   };
