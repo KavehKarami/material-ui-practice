@@ -9,9 +9,13 @@ import {
 import { format } from "date-fns";
 import { drawerWith } from "./SideBar";
 import MarioIcon from "../../assets/images/mario-av.png";
+import { useContext } from "react";
+import DirectionContext from "../../Contexts/DirectionContext";
+import { Dir } from "../layout/Direction/types";
 
 function Appbar() {
-  const classes = useStyles();
+  const { dir } = useContext(DirectionContext);
+  const classes = useStyles({ dir });
 
   return (
     <AppBar className={classes.root}>
@@ -36,8 +40,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
   },
   avatar: {
-    margin:
-      theme.direction === "ltr"
+    margin: ({ dir }: { dir: Dir }) =>
+      dir === "ltr"
         ? `0 0 0 ${theme.spacing(1)}px`
         : `0 ${theme.spacing(1)}px 0 0`,
   },
