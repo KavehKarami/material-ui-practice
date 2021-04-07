@@ -4,6 +4,7 @@ import routes from "../routes";
 import { theme } from "../theme";
 import { useMemo, useState } from "react";
 import Direction from "./layout/Direction";
+import Layout from "./layout/";
 import DirectionContext from "../Contexts/DirectionContext";
 
 function App() {
@@ -19,20 +20,22 @@ function App() {
     >
       <ThemeProvider theme={myTheme}>
         <div dir={dir}>
-          <Direction dir={dir}>
-            <Router>
-              <Switch>
-                {routes.map((route, index) => (
-                  <Route
-                    component={route.component}
-                    exact={route.exact}
-                    path={route.path}
-                    key={index}
-                  />
-                ))}
-              </Switch>
-            </Router>
-          </Direction>
+          <Router>
+            <Direction dir={dir}>
+              <Layout>
+                <Switch>
+                  {routes.map((route, index) => (
+                    <Route
+                      component={route.component}
+                      exact={route.exact}
+                      path={route.path}
+                      key={index}
+                    />
+                  ))}
+                </Switch>
+              </Layout>
+            </Direction>
+          </Router>
         </div>
       </ThemeProvider>
     </DirectionContext.Provider>
