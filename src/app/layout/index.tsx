@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import SideBar from "../components/SideBar";
 
 function Layout({ children }: { children: JSX.Element }) {
@@ -18,13 +18,16 @@ function Layout({ children }: { children: JSX.Element }) {
 
 export default Layout;
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-  },
-  pages: {
-    // backgroundColor: "#f9f9f9",
-    width: "100%",
-    marginTop: 15,
-  },
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+    },
+    pages: {
+      // backgroundColor: "#f9f9f9",
+      paddingTop: theme.spacing(3),
+      width: "100%",
+      marginTop: 15,
+    },
+  })
+);

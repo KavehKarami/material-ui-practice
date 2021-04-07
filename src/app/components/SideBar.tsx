@@ -6,7 +6,7 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { useHistory, useLocation } from "react-router";
 import routes from "../../routes";
 
@@ -22,7 +22,9 @@ function SideBar() {
       variant="permanent"
     >
       <div>
-        <Typography variant="h5">Kavehhhhh</Typography>
+        <Typography className={classes.title} variant="h5">
+          Kaveh's Notes
+        </Typography>
       </div>
 
       <List>
@@ -50,23 +52,28 @@ function SideBar() {
 export default SideBar;
 
 const drawerWith = 240;
-const useStyles = makeStyles({
-  drawer: {
-    width: drawerWith,
-  },
-  drawerPaper: {
-    width: drawerWith,
-  },
-  navLink: {
-    backgroundColor: "#fff",
-    display: "block",
-    textDecoration: "none",
-
-    "&:hover, &:focus": {
-      backgroundColor: "transparent",
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    drawer: {
+      width: drawerWith,
     },
-  },
-  active: {
-    backgroundColor: "#f4f4f4 !important",
-  },
-});
+    drawerPaper: {
+      width: drawerWith,
+    },
+    navLink: {
+      backgroundColor: "#fff",
+      display: "block",
+      textDecoration: "none",
+
+      "&:hover, &:focus": {
+        backgroundColor: "transparent",
+      },
+    },
+    active: {
+      backgroundColor: "#f4f4f4 !important",
+    },
+    title: {
+      padding: theme.spacing(2),
+    },
+  })
+);
