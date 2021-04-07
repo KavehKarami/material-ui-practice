@@ -23,7 +23,7 @@ function SideBar() {
     >
       <div>
         <Typography className={classes.title} variant="h5">
-          Kaveh's Notes
+          Kaveh Notes
         </Typography>
       </div>
 
@@ -51,7 +51,7 @@ function SideBar() {
 
 export default SideBar;
 
-const drawerWith = 240;
+export const drawerWith = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     drawer: {
