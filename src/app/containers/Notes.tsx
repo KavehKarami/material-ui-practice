@@ -1,5 +1,6 @@
+import { Container } from "@material-ui/core";
+import Masonry from "react-masonry-css";
 import useFetch from "../../hooks/useFetch";
-import { Container, Grid } from "@material-ui/core";
 import { NoteProps } from "./types";
 import NoteCard from "../components/NoteCard";
 import deleteNote from "../../services/DeleteNote";
@@ -13,15 +14,25 @@ function Notes() {
     updateNotes(newNotes);
   };
 
+  const breakpoints = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
+
   return (
     <Container>
-      <Grid spacing={3} container>
+      <Masonry
+        breakpointCols={breakpoints}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {notes.map((note) => (
-          <Grid item xs={12} md={6} lg={4} key={note.id}>
+          <div key={note.id}>
             <NoteCard handleDelete={handleDelete} note={note} />
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </Masonry>
     </Container>
   );
 }
